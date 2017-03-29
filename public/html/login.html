@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>STAR</title>
+	<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+	<link rel="icon" type="image/ico" href="../../favicon.ico"/>
+	<link rel="stylesheet" href="../../css/commun.css">
+	<style>
+		html,body{height:100%;}
+		.nav{
+			position: absolute;
+			top: 0;
+			left: 0;
+			width: 100%;
+			margin: 0 auto;
+			background: #000000;
+			height: 50px;
+			border-bottom: 1px solid #666666;
+		}
+		.logo{
+			float: left;
+			margin: 5px 10px 0 33px;
+		}
+		.logo img{
+			width: 40px;
+			height: 40px;
+		}
+		.nav .logoName {
+			float: left;
+			margin-top: 20px;
+			font-size: 20px;
+			color: #ffffff;
+		}
+
+		.login{
+			line-height: 50px;
+			float: right;
+			margin-right: 30px;
+		}
+		.login a{
+			color: #ffffff;
+		}
+		.login a:hover{
+			color: #666666;
+		}
+		.main{
+			position: relative;
+			width: 100%;
+			height: 100%;
+			background-image: url(../../images/background.jpg);
+			overflow: hidden;	
+		}
+		.enter{
+			width: 300px;
+			margin-top: 180px;
+			margin-left: 150px;
+			border: 2px solid #666666;
+			border-radius: 15px;
+			color:#666666;
+		}
+		.enter form{
+			margin-left: 20px;
+		}
+		.enter input{
+			margin:10px 0 10px 20px;
+		}
+		.enter .input1{
+			margin-left: 32px;
+		}
+		.enter .sub{
+			transition: border 1s,background 1s,color 1s,height 1s;
+			margin-left: 90px;
+			width: 80px;
+			line-height: 20px;
+			border-radius: 15px;
+			border: 2px solid #666666;
+			background-color: #000000;
+			color: #666666;
+		}
+		.enter .sub:hover{
+			border: 2px solid #000000;
+			color:#000000;
+			background-color: #666666;	
+		}
+
+	</style>
+</head>
+<body>
+	<div class="main" id="main">
+		<div class="enter" id="enter">
+			<form action="post">
+				用户名：
+				<input type="text" name="username">
+				<br>
+				密码：
+				<input class="input1" type="password" name="password">
+				<br>
+				<input id="sub" class="sub" type="button" name="submit" value="确认">
+			</form>
+		</div>
+	</div>
+	<div class="nav">
+		<div class="logo"><img src="../../images/logo.jpg" alt="star" title="star"></div>
+		<div class="logoName">star</div>
+		<div class="login">
+			<a href="./reg.html">注册</a>
+		</div>
+	</div>
+</body>
+<script type="text/javascript">
+	var sub=document.getElementById('sub');
+	sub.onclick=function(){
+		var req=new XMLHttpRequest();     
+		if(req){
+			req.open("POST", "./snow/", true);  
+	        req.setRequestHeader("Content-Type","application/x-www-form-urlencoded; charset=gbk;");     
+	        req.send("keywords=手机");  
+	        req.onreadystatechange = function(){  
+				if(req.readyState == 4){  
+	                if(req.status == 200){  
+	                    alert("success");  
+	                }else{  
+	                    alert("error");  
+	                }  
+                }  
+
+			}
+		}
+	}
+
+
+
+	
+</script>
+</html>

@@ -1,0 +1,164 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>STAR</title>
+	<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+	<link rel="icon" type="image/ico" href="./favicon.ico"/>
+	<link rel="stylesheet" href="./css/commun.css">
+	<style>
+		html,body{height:100%;}
+		.nav{
+			position: absolute;
+			top: 0;
+			left: 0;
+			width: 100%;
+			margin: 0 auto;
+			background: #000000;
+			height: 50px;
+			border-bottom: 1px solid #666666;
+		}
+		.logo{
+			float: left;
+			margin: 5px 10px 0 33px;
+		}
+		.logo img{
+			width: 40px;
+			height: 40px;
+		}
+		.nav .logoName {
+			float: left;
+			margin-top: 20px;
+			font-size: 20px;
+			color: #ffffff;
+		}
+
+		.login{
+			line-height: 50px;
+			float: right;
+			margin-right: 30px;
+		}
+		.login a{
+			color: #ffffff;
+		}
+		.login a:hover{
+			color: #666666;
+		}
+		.main{
+			position: relative;
+			width: 100%;
+			height: 100%;
+			background-image: url(./images/background.jpg);
+			overflow: hidden;	
+		}
+		.enter{
+			width: 300px;
+			margin-top: 180px;
+			margin-left: 150px;
+			border: 2px solid #666666;
+			border-radius: 15px;
+			color:#666666;
+		}
+		.enter form{
+			margin-left: 20px;
+		}
+		.enter input{
+			margin:10px 0 10px 20px;
+		}
+		.enter .input1{
+			margin-left: 32px;
+		}
+		.enter .input2{
+			margin-left: 9px;
+		}
+		.enter .sub{
+			transition: border 1s,background 1s,color 1s,height 1s;
+			margin-left: 90px;
+			width: 80px;
+			line-height: 20px;
+			border-radius: 15px;
+			border: 2px solid #666666;
+			background-color: #000000;
+			color: #666666;
+			outline: none;
+		}
+		.enter .sub:hover{
+			border: 2px solid #000000;
+			color:#000000;
+			background-color: #666666;	
+			outline: none;
+		}
+		.modal{
+			margin: 0 auto;
+			display: none;
+			width: 300px;
+			height: 150px;
+			border: 2px solid #666666;
+			border-radius: 15px;
+			overflow: hidden;
+		}
+		.modal .title{
+			padding-left: 10px;
+			color: #666666;
+			line-height: 30px;
+			border-bottom: 2px solid #666666;
+		}
+		.modal .content{
+			padding-top: 30px;
+			text-align: center;
+			height: 50px;
+			font-size: 15px ;
+			color: #aaaaaa;
+		}
+	</style>
+</head>
+<body>
+	<div class="main" id="main">
+		<div class="enter" id="enter">
+			<form>
+				用户名：
+				<input type="text" name="username" id="name" minlength="2" placeholder="两个字符以上">
+				<br>
+				密码：
+				<input class="input1" type="password" name="password" id="password" minlength="2" placeholder="两个字符以上">
+				<br>
+				确认密码：
+				<input class="input2" type="password" name="password-repeat" id="password-repeat" minlength="2" placeholder="请再次输入密码">
+				<br>
+				<input class="sub" type="submit" name="" value="确认" onclick="postData(this); return false">
+			</form>
+		</div>
+			<!-- 模态框（Modal） -->
+		<div class="modal" id="modal">
+			<div class="title">——STAR——</div>
+			<div class="content" id="content"></div>
+		</div>
+	</div>
+	<div class="nav">
+		<div class="logo"><img src="./images/logo.jpg" alt="star" title="star"></div>
+		<div class="logoName">star</div>
+		<div class="login">
+			<a href="/">首页</a>
+			<a href="./login">登录</a>
+		</div>
+	</div>
+</body>
+<script type="text/javascript" src="/javascripts/jquery-1.10.2.min.js"></script>
+<script type="text/javascript">
+	function postData(_this){
+		$.post('/reg',{
+			username:$('#name').val(),
+			password:$('#password').val(),
+			passwordRepeat:$('#password-repeat').val()
+		},function(data){
+			$('#content').html(data.msg);
+			$('#modal').css('display','block');
+			if(data.status){
+				setTimeout("javascript:location.href='/'", 1500); 	
+			}else{
+				setTimeout("javascript:location.href='/reg'", 1500);
+			}	
+		})
+	}
+</script>
+</html>

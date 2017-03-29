@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>STAR</title>
+	<link rel="icon" type="image/ico" href="/favicon.ico"/>
+	<link rel="stylesheet" type="text/css" href="/css/bootstrap.css">
+	<style type="text/css">
+		body{ 
+			padding-top: 60px;
+			padding-bottom: 40px;
+		}
+	</style>
+	<link rel="stylesheet" type="text/css" href="/css/bootstrap-responsive.css">
+</head>
+<body>
+	<div class="navbar navbar-fixed-top">
+		<div class="navbar-inner">
+			<div class="container">
+				<a class="btn btn-navbar" data-toggle="collapse" data-target=".nav-collapse">
+					<span class="icon-bar"></span>
+					<span class="icon-bar"></span>
+					<span class="icon-bar"></span>
+				</a>
+				<a class="brand" href="/">STAR</a>
+				<ul class="nav">
+					<li><a href="./user/<%=user._id%>">个人中心</a></li>
+					<li><a href="/list">看文章</a></li>
+				</ul>
+			</div>
+		</div>
+	</div>
+	<div id="container" class="container">
+
+		<form method="post">
+			<div class="page-header">
+			   <input type="text" name="title" placeholder="标题" style="width: 100%">
+			</div>
+			<div class="page-header">
+				<textarea name="content" placeholder="内容" style="width: 100%; height: 300px"></textarea>
+			</div>
+			<input type="submit" name="submit" value="发布" class="btn btn-info" style="width: 100px">
+		</form>
+			
+		<hr />
+<!-- 		<footer>
+			<p>2017</p>
+		</footer> -->
+	</div>
+</body>
+<script type="text/javascript" src="/javascripts/jquery-1.10.2.min.js"></script>
+<script type="text/javascript" src="/javascripts/bootstrap.js"></script>
+</html>
